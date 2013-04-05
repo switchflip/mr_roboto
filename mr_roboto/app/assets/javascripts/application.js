@@ -42,11 +42,21 @@ var y = 300;
 
 	// We will separate the following out after.  During refactoring Phase.
 	// The plan is to refactor our code 30 minutes later. #####jam3.com
+  function drawCraft() {
+      var c=document.getElementById("myCanvas");
+      var ctx=c.getContext("2d");
+      ctx.fillStyle="#330000";
+      ctx.fillRect(x,y,50/zoom,50/zoom);  
+      y += forward*10;
+      x += strafe*10;
+      console.log("I made it through a loop!");
+  }
+
 	function moveForward() {
 		if (forward < max) {
 			forward+=interval;
 			$.ajax({url: connection, data: {forward: forward, turn: turn, strafe: strafe}, dataType: "jsonp"});
-      y+=10 
+      drawCraft();
 		} else {
 			console.log('Maximum velocity achieved.');
 		}
@@ -56,7 +66,7 @@ var y = 300;
 			turn+=interval;
 			$.ajax({url: connection, data: {forward: forward, turn: turn, strafe: strafe}, dataType: "jsonp"});
 		} else {
-			console.log('Maximum Turn Achieved!')
+			console.log('Maximum Turn Achieved!');
 		} 
 	}
 	function moveBackward() {
@@ -64,7 +74,7 @@ var y = 300;
 			forward-=interval;
 			$.ajax({url: connection, data: {forward: forward, turn: turn, strafe: strafe}, dataType: "jsonp"});
 		} else {
-			console.log('Maximum Negative Velocity Achieved!')
+			console.log('Maximum Negative Velocity Achieved!');
 		}
 	}
 	function turnLeft() {
@@ -72,7 +82,7 @@ var y = 300;
 			turn-=interval;
 			$.ajax({url: connection, data: {forward: forward, turn: turn, strafe: strafe}, dataType: "jsonp"});
 		} else {
-			console.log('Maximum Turn Achieved!')
+			console.log('Maximum Turn Achieved!');
 		}
 	}
 	function strafeLeft() {
@@ -80,7 +90,7 @@ var y = 300;
 			strafe+=interval;
 			$.ajax({url: connection, data: {forward: forward, turn: turn, strafe: strafe}, dataType: "jsonp"});
 		} else {
-			console.log('Maximum Turn Achieved!')
+			console.log('Maximum Turn Achieved!');
 		}
 	}
 	function strafeRight() {
@@ -88,7 +98,7 @@ var y = 300;
 			strafe-=interval;
 			$.ajax({url: connection, data: {forward: forward, turn: turn, strafe: strafe}, dataType: "jsonp"});
 		} else {
-			console.log('Maximum Turn Achieved!')
+			console.log('Maximum Turn Achieved!');
 		}
 	}
 	function allStop() {
@@ -134,11 +144,8 @@ $(document).ready(function(){
 		} 
 	});
 
-var c=document.getElementById("myCanvas");
-var ctx=c.getContext("2d");
-ctx.fillStyle="#330000";
-ctx.fillRect(x,y,50/zoom,50/zoom);
-
+    setInterval(drawCraft,1000); 
+    console.log("I'm past the first drawCraft");
 });
 
 
