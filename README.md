@@ -1,3 +1,5 @@
+#Working on creating an interface to the mc_hammer_bot api with [Switchflip](https://github.com/switchflip)  and [Abaxial](https://github.com/Abaxial)
+
 # Mc HammerBot
 Playing with a robot to learn JavaScript, AJAX and a touch of Node.js
 
