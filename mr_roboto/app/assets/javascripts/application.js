@@ -26,16 +26,17 @@
 // UI Improvements
 // w
 
-
+var zoom = 1; // If we get so far as to zoom out as we hit the edge of the screen.
 var forward = 0;
 var turn = 0;
 var strafe = 0;
 var interval=.5;
 var max = 1;
 var min = -1;
-var connection = "http://192.168.1.54:8071/motion-control/update";
+var connection = "http://127.0.0.1:8071/motion-control/update";
 
-	
+var x = 650;
+var y = 300;
 
 
 
@@ -45,6 +46,7 @@ var connection = "http://192.168.1.54:8071/motion-control/update";
 		if (forward < max) {
 			forward+=interval;
 			$.ajax({url: connection, data: {forward: forward, turn: turn, strafe: strafe}, dataType: "jsonp"});
+      y+=10 
 		} else {
 			console.log('Maximum velocity achieved.');
 		}
@@ -102,7 +104,6 @@ $(document).ready(function(){
 	$(document).keydown(function(key){
 		switch(parseInt(key.keyCode)){ // KEYS = a:65 s:83 d:68 w:87 q:81 e:69 space:32
 			case 87:
-				
 				// move forward
 				moveForward();
 				break;
@@ -118,22 +119,55 @@ $(document).ready(function(){
 				// move left
 				turnLeft();
 				break;
-
 			case 81:
 				// strafe left
 				strafeLeft();
 				break;
-
-			case 69:
+  		case 69:
 				//strafe right
 				strafeRight();
 				break;
-
 			case 32:
 				//stop all
 				allStop();
 				break;
 		} 
-
 	});
+
+var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
+ctx.fillStyle="#330000";
+ctx.fillRect(x,y,50/zoom,50/zoom);
+
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
