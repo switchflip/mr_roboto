@@ -30,7 +30,7 @@ var zoom = 1; // If we get so far as to zoom out as we hit the edge of the scree
 var forward = 0;
 var turn = 0;
 var strafe = 0;
-var interval=.5;
+var interval=1;
 var max = 1;
 var min = -1;
 var connection = "http://127.0.0.1:8071/motion-control/update";
@@ -38,6 +38,13 @@ var color=000;
 var x = 650;
 var y = 300;
 var toggle = true;
+var turnDraw = 0;
+
+
+function manipulateXY() {
+
+
+}
 
 	// We will separate the following out after.  During refactoring Phase.
 	// The plan is to refactor our code 30 minutes later. #####jam3.com
@@ -48,7 +55,6 @@ var toggle = true;
       ctx.fillRect(x,y,20/zoom,20/zoom);  
       y -= forward*10;
       x -= strafe*10;
-      console.log("I made it through a loop!");
 
       if (toggle === true) {
       	color+=5;
@@ -61,6 +67,50 @@ var toggle = true;
       } else if (color === 0) {
       	toggle = true;
       }
+      // These are the turn calculations below
+
+     //  console.log(turnDraw);
+
+     // 	if (turn <= 1 && turn > 0) {
+     	
+     // 		switch (turnDraw) {
+
+     // 			case 1:
+     // 			  y -= turn*10;
+	    //  			x += turn*10;
+	    //  			break;
+					// case 2: 
+					// 	x += turn*10;
+					// 	break;
+					// case 3:
+					// 	x += turn*10;
+					// 	y += turn*10;
+					// 	break;
+					// case 4:
+					// 	y += turn*10;
+					// 	break;
+					// case 5:
+					// 	y += turn*10;
+					// 	x -= turn*10;
+					// 	break;
+					// case 6: 
+					// 	x -+ turn*10;
+					// 	break;
+					// case 7:
+					// 	y -= turn*10;
+					// 	x -= turn*10;
+					// 	break;
+     // 		}
+
+     // 		turnDraw += turn;
+     
+     // 	} else if (turn >= -1 && turn < 0) {
+     // 		turnDraw += turn;
+     // 	} else {
+     // 		turnDraw += turn;
+     // 	}
+
+
   }
 
 	function moveForward() {
