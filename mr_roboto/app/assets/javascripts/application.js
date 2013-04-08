@@ -34,22 +34,33 @@ var interval=.5;
 var max = 1;
 var min = -1;
 var connection = "http://127.0.0.1:8071/motion-control/update";
-
+var color=000;
 var x = 650;
 var y = 300;
-
-
+var toggle = true;
 
 	// We will separate the following out after.  During refactoring Phase.
 	// The plan is to refactor our code 30 minutes later. #####jam3.com
   function drawCraft() {
       var c=document.getElementById("myCanvas");
       var ctx=c.getContext("2d");
-      ctx.fillStyle="#330000";
-      ctx.fillRect(x,y,50/zoom,50/zoom);  
-      y += forward*10;
-      x += strafe*10;
+      ctx.fillStyle="rgb("+color+","+color+","+color+")";
+      ctx.fillRect(x,y,20/zoom,20/zoom);  
+      y -= forward*10;
+      x -= strafe*10;
       console.log("I made it through a loop!");
+
+      if (toggle === true) {
+      	color+=5;
+      } else {
+      	color-=5;
+      }
+      	
+      if (color > 230) {
+      	toggle = false;
+      } else if (color === 0) {
+      	toggle = true;
+      }
   }
 
 	function moveForward() {

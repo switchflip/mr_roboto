@@ -12,8 +12,26 @@
  *= require_tree .
  */
 
+body {
+  background-color: #ccc;
+  padding: 100px;
+}
+
+.container {
+  width: 1600px;
+  margin: auto;
+}
+
 canvas {
   top: 50px;
   left: 50px;
   border: 2px solid black;
+  background-color: white;
+  margin: auto;
+}
+
+.buttons {
+  display: inline;
+  position: relative;
+  left: 620px;
 }
